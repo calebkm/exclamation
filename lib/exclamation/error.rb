@@ -1,5 +1,5 @@
 module Exclamation
-  class ConfiguratoinFileNotFound < RuntimeError
+  class ConfigurationFileNotFound < RuntimeError
     def initialize(message='Uh oh! Looks like your config filepath is incorrect.')
       super(message)
     end
