@@ -2,7 +2,7 @@ module Exclamation
   class Configuration
 
     EXCLAMATIONS = [:positives, :indifferents, :negatives, :greetings, :partings]
-    
+
     def initialize
       yield(self) if block_given?
     end
@@ -18,7 +18,7 @@ module Exclamation
     end
 
     EXCLAMATIONS.each do |exclamation|
-      define_method(exclamation) do 
+      define_method(exclamation) do
         get_or_set_instance_variable(exclamation)
       end
 
@@ -62,7 +62,6 @@ module Exclamation
     end
 
     def load_yaml(path)
-      puts "loading file: #{path}"
       YAML.load_file(path)
     end
 
