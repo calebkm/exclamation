@@ -7,11 +7,20 @@ class ExclamationTest < Minitest::Test
     Exclamation.configuration.reload!
   end
 
-  def test_class_methods_are_dynamically_created_from_configuration
+  def test_responds_to_class_methods_from_configuration_exclamations
     Exclamation::Configuration::EXCLAMATIONS.each do |exclamation|
       method_name = exclamation[0..-2] # Exclamation responds to the singular exclamation
 
       assert_respond_to Exclamation, method_name
+    end
+  end
+
+  def test_class_methods_can_take_i18n_locale_as_argument
+    Exclamation::Configuration::EXCLAMATIONS.each do |exclamation|
+      method_name = exclamation[0..-2] # Exclamation responds to the singular exclamation
+      i18n_locale = 'fr'
+
+      assert_respond_to Exclamation, method_name, i18n_locale
     end
   end
 

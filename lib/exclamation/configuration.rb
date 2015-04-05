@@ -33,15 +33,12 @@ module Exclamation
       # match methods like "greetings=" and "greetings_en="
       if method.to_s =~ /^([a-z]+)(?:_)?([a-z]+)?=$/ && EXCLAMATIONS.include?($1.to_sym)
         instance_variable_set("@#{$1}_#{$2 || default_locale}", load_content(args.first))
-
       # match methods like "include_greetings=" and "include_greetings_en="
       elsif method.to_s =~ /^include_([a-z]+)(?:_)?([a-z]+)?=$/ && EXCLAMATIONS.include?($1.to_sym)
         instance_variable_set("@#{$1}_#{$2 || default_locale}", send($1, $2) + load_content(args.first))
-
       # match methods like "exclude_greetings=" and "exclude_greetings_en="
       elsif method.to_s =~ /^exclude_([a-z]+)(?:_)?([a-z]+)?=$/ && EXCLAMATIONS.include?($1.to_sym)
         instance_variable_set("@#{$1}_#{$2 || default_locale}", send($1, $2) - load_content(args.first))
-
       else
         super
       end
