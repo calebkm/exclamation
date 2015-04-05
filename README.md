@@ -51,6 +51,8 @@ Exclamation.greeting      => 'Bonjour' # default is now French
 Exclamation.greeting(:fr) => 'Salut'   # specify locale
 Exclamation.greeting(:en) => 'Hello'   # provided English defaults
 ```
+If no matching locale is found in the configuration, `Exclamation` will always fall back to English.
+
 
 ## Note ##
 Currently in 0.0.1 alpha for a side project. Some day soon `Exclamation` will graduate to a beta!
