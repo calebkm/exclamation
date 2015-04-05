@@ -13,13 +13,7 @@ module Exclamation
     end
 
     def default_locale=(locale)
-      @locale ||= locale || DEFAULT_LOCALE
-    end
-
-    def reload!
-      instance_variables.each do |var|
-        remove_instance_variable(var)
-      end
+      @locale = locale
     end
 
     EXCLAMATIONS.each do |exclamation|
@@ -41,6 +35,12 @@ module Exclamation
         instance_variable_set("@#{$1}_#{$2 || default_locale}", send($1, $2) - load_content(args.first))
       else
         super
+      end
+    end
+
+    def reload!
+      instance_variables.each do |var|
+        remove_instance_variable(var)
       end
     end
 
