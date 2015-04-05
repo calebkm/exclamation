@@ -62,9 +62,7 @@ module Exclamation
     end
 
     def load_yaml(path)
-      puts "loading file: #{path}"
       YAML.load_file(path)
     end
-
   end
 end
