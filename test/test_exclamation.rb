@@ -17,7 +17,7 @@ class ExclamationTest < Minitest::Test
 
   def test_class_methods_return_random_string_from_configuration_array
     Exclamation::Configuration::EXCLAMATIONS.each do |exclamation|
-      exclamations_array = Exclamation::Configuration.new.defaults(exclamation)
+      exclamations_array = Exclamation::Configuration.new.send(:load_default_yaml, exclamation)
       returned_string = Exclamation.send(exclamation[0..-2])
 
       assert_includes exclamations_array, returned_string

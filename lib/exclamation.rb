@@ -13,8 +13,8 @@ module Exclamation extend self
   end
 
   Configuration::EXCLAMATIONS.each do |exclamation|
-    define_method(exclamation[0..-2]) do
-      configuration.send(exclamation).sample
+    define_method(exclamation[0..-2]) do |locale = nil|
+      configuration.send(exclamation, locale).sample
     end
   end
 

@@ -2,13 +2,18 @@ module Exclamation
   class Configuration
 
     EXCLAMATIONS = [:positives, :indifferents, :negatives, :greetings, :partings]
+    DEFAULT_LOCALE = :en
     
     def initialize
       yield(self) if block_given?
     end
 
-    def defaults(name)
-      load_default_yaml(name)
+    def default_locale
+      (@locale || DEFAULT_LOCALE).to_s
+    end
+
+    def default_locale=(locale)
+      @locale ||= locale || DEFAULT_LOCALE
     end
 
     def reload!
@@ -18,28 +23,35 @@ module Exclamation
     end
 
     EXCLAMATIONS.each do |exclamation|
-      define_method(exclamation) do 
-        get_or_set_instance_variable(exclamation)
+      define_method(exclamation) do |locale|
+        locale = locale || default_locale
+        get_or_set_instance_variable(exclamation, locale)
       end
+    end
 
-      define_method("#{exclamation}=") do |content|
-        instance_variable_set("@#{exclamation}", load_content(content))
-      end
+    def method_missing(method, *args)
+      # match methods like "greetings=" and "greetings_en="
+      if method.to_s =~ /^([a-z]+)(?:_)?([a-z]+)?=$/ && EXCLAMATIONS.include?($1.to_sym)
+        instance_variable_set("@#{$1}_#{$2 || default_locale}", load_content(args.first))
 
-      define_method("include_#{exclamation}") do |content|
-        instance_variable_set("@#{exclamation}", send(exclamation) + load_content(content))
-      end
+      # match methods like "include_greetings=" and "include_greetings_en="
+      elsif method.to_s =~ /^include_([a-z]+)(?:_)?([a-z]+)?=$/ && EXCLAMATIONS.include?($1.to_sym)
+        instance_variable_set("@#{$1}_#{$2 || default_locale}", send($1, $2) + load_content(args.first))
 
-      define_method("exclude_#{exclamation}=") do |content|
-        instance_variable_set("@#{exclamation}", send(exclamation) - load_content(content))
+      # match methods like "exclude_greetings=" and "exclude_greetings_en="
+      elsif method.to_s =~ /^exclude_([a-z]+)(?:_)?([a-z]+)?=$/ && EXCLAMATIONS.include?($1.to_sym)
+        instance_variable_set("@#{$1}_#{$2 || default_locale}", send($1, $2) - load_content(args.first))
+
+      else
+        super
       end
     end
 
   private
 
-    def get_or_set_instance_variable(var)
-      instance = instance_variable_get("@#{var}")
-      instance || instance_variable_set("@#{var}", load_default_yaml(var))
+    def get_or_set_instance_variable(var, locale)
+      instance = instance_variable_get("@#{var}_#{locale}")
+      instance || instance_variable_set("@#{var}_#{locale}", load_default_yaml(var))
     end
 
     def load_content(content)

@@ -1,9 +1,7 @@
 # Exclamation #
-
 A random exclamation generator. Niiiiice!
 
 ## About ##
-
 `Exclamation` is a random word generator built in [Ruby](https://www.ruby-lang.org/en/) that returns exclamations like "Hello", "Uh oh" and "Booyah".
 
 ## Usage ##
@@ -33,6 +31,23 @@ Exclamation.configure do |config|
 end
 ```
 
-## Note ##
+## Internationalization ##
+Although the provided lists are in English, you can easily provide your own translations and `Exclamation` will be happy to use them.
 
+```ruby
+Exclamation.configure do |config|
+  # Set a default locale besides :en
+  config.default_locale = :fr
+
+  # Configure the lists for your locale
+  config.greetings_fr = ['Bonjour', 'Salut']
+end
+
+
+Exclamation.greeting       => 'Bonjour' # default is now French
+Exclamation.greeting(:fr)  => 'Salut'   # specify locale
+Exclamation.greeting('en') => 'Hello'   # provided English defaults
+```
+
+## Note ##
 Currently in 0.0.1 alpha for a side project. Some day soon `Exclamation` will graduate to a beta!
