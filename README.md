@@ -34,6 +34,7 @@ end
 ## Internationalization ##
 Although the provided lists are in English, you can easily provide your own translations and `Exclamation` will be happy to use them.
 
+# Configuration #
 ```ruby
 Exclamation.configure do |config|
   # Set a default locale besides :en
@@ -42,8 +43,10 @@ Exclamation.configure do |config|
   # Configure the lists for your locale
   config.greetings_fr = ['Bonjour', 'Salut']
 end
+```
 
-
+# Usage #
+```ruby
 Exclamation.greeting       => 'Bonjour' # default is now French
 Exclamation.greeting(:fr)  => 'Salut'   # specify locale
 Exclamation.greeting('en') => 'Hello'   # provided English defaults
