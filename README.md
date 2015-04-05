@@ -47,9 +47,9 @@ end
 
 ##### I18n Usage #####
 ```ruby
-Exclamation.greeting       => 'Bonjour' # default is now French
-Exclamation.greeting(:fr)  => 'Salut'   # specify locale
-Exclamation.greeting('en') => 'Hello'   # provided English defaults
+Exclamation.greeting      => 'Bonjour' # default is now French
+Exclamation.greeting(:fr) => 'Salut'   # specify locale
+Exclamation.greeting(:en) => 'Hello'   # provided English defaults
 ```
 
 ## Note ##
