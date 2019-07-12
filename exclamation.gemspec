@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'exclamation'
-  s.version     = '0.1.0'
-  s.date        = '2015-02-21'
+  s.version     = '0.1.1'
+  s.date        = '2019-07-12'
   s.summary     = 'A random exclamation generator.'
   s.description = 'Returns a random exclamation - like "Wow" - from a configurable list.'
   s.authors     = ['Caleb K Matthiesen']
