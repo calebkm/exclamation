@@ -10,6 +10,6 @@ Gem::Specification.new do |s|
   s.homepage    = 'http://github.com/calebkm/exclamation'
   s.license     = 'MIT'
 
-  s.add_development_dependency 'rake', '~> 10.3'
+  s.add_development_dependency 'rake', '~> 12.3'
   s.add_development_dependency 'minitest', '~> 5.4'
 end
