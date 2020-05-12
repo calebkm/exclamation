@@ -1,6 +1,5 @@
 module Exclamation
   class Configuration
-
     EXCLAMATIONS = [:positives, :indifferents, :negatives, :greetings, :partings]
     DEFAULT_LOCALE = :en
     

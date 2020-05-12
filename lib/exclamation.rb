@@ -1,9 +1,8 @@
-require 'exclamation/configuration'
-require 'exclamation/error'
+require './exclamation/configuration'
+require './exclamation/error'
 require 'yaml'
 
 module Exclamation extend self
-
   def configure(&block)
     @configuration = Configuration.new(&block)
   end
@@ -17,5 +16,4 @@ module Exclamation extend self
       configuration.send(exclamation, locale).sample
     end
   end
-
 end

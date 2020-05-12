@@ -2,7 +2,6 @@ require 'minitest/autorun'
 require 'exclamation'
 
 class Exclamation::ConfigurationTest < Minitest::Test
-
   def setup
     @configuration = Exclamation::Configuration.new
   end
@@ -97,5 +96,4 @@ class Exclamation::ConfigurationTest < Minitest::Test
   def test_private_instance_method_load_yaml
     assert_equal @configuration.send(:load_yaml, 'config/positives.yml').class, Array
   end
-
 end
