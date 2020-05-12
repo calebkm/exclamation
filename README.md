@@ -55,4 +55,4 @@ If no matching locale is found in the configuration, `Exclamation` will always f
 
 
 ## Note ##
-Currently in 0.1.4 alpha for a side project. Some day soon `Exclamation` will graduate to a beta!
+Currently in 0.1.5 alpha for a side project. Some day soon `Exclamation` will graduate to a beta!

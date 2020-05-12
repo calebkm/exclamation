@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'exclamation'
-  s.version     = '0.1.4'
+  s.version     = '0.1.5'
   s.date        = '2020-05-11'
   s.summary     = 'A random exclamation generator.'
   s.description = 'Returns a random exclamation - like "Wow" - from a configurable list.'
