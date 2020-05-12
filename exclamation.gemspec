@@ -2,7 +2,7 @@ $LOAD_PATH.push File.expand_path('../lib', __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = 'exclamation'
-  s.version     = '0.1.5'
+  s.version     = '0.1.6'
   s.date        = '2020-05-11'
   s.summary     = 'A random exclamation generator.'
   s.description = 'Returns a random exclamation - like "Wow" - from a configurable list.'
