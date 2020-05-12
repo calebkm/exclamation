@@ -1,5 +1,5 @@
-require_relative 'exclamation/configuration'
-require_relative 'exclamation/error'
+require 'exclamation/configuration'
+require 'exclamation/error'
 require 'yaml'
 
 module Exclamation extend self
